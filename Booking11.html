@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Booking 11 - Chatbot y Servicios</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="w3-light-grey">
+
+<!-- CHATBOT -->
+<div class="chat-container">
+  <div class="chat-messages" id="chat-messages">
+    <div class="message bot">Hola, soy tu asistente virtual. ¿En qué puedo ayudarte?</div>
+  </div>
+  <div class="chat-input">
+    <input type="text" id="user-input" placeholder="Escribe un mensaje...">
+    <button onclick="sendMessage()">Enviar</button>
+  </div>
+</div>
+
+<!-- MENÚ Y PÁGINA PRINCIPAL -->
+<div class="w3-bar w3-white w3-border-bottom w3-xlarge">
+  <a href="#" class="w3-bar-item w3-button w3-text-red w3-hover-red">
+    <b><i class="fa fa-map-marker w3-margin-right"></i>Booking 11</b>
+  </a>
+</div>
+
+<header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
+  <img class="w3-image" src="https://www.w3schools.com/w3images/london2.jpg" alt="London" width="1500" height="700">
+  <div class="w3-display-middle" style="width:65%">
+    <div class="w3-bar w3-black">
+      <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Flight');">
+        <i class="fa fa-plane w3-margin-right"></i>Vuelo
+      </button>
+      <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Hotel');">
+        <i class="fa fa-bed w3-margin-right"></i>Hotel
+      </button>
+      <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Car');">
+        <i class="fa fa-car w3-margin-right"></i>Renta de Auto
+      </button>
+    </div>
+
+    <div id="Flight" class="w3-container w3-white w3-padding-16 myLink">
+      <h3>Viaja por el mundo</h3>
+      <div class="w3-row-padding" style="margin:0 -16px;">
+        <div class="w3-half">
+          <label>Salida</label>
+          <input class="w3-input w3-border" type="text" placeholder="Lugar de salida">
+        </div>
+        <div class="w3-half">
+          <label>Regreso</label>
+          <input class="w3-input w3-border" type="text" placeholder="Lugar de llegada">
+        </div>
+      </div>
+      <p>
+        <a href="https://www.latamairlines.com/" target="_blank" class="w3-button w3-dark-grey">
+          <i class="fa fa-plane w3-margin-right"></i>Buscar Vuelo
+        </a>
+      </p>
+    </div>
+
+    <div id="Hotel" class="w3-container w3-white w3-padding-16 myLink">
+      <h3>Busca el mejor hotel para estar tranquilo</h3>
+      <p>Dile al agente y el sitio de Airbnb que el botón "Buscar hotel" te dará la mejor experiencia al mejor precio.</p>
+      <p>
+        <a href="https://www.booking.com/" target="_blank" class="w3-button w3-dark-grey">
+          <i class="fa fa-bed w3-margin-right"></i>Buscar Hotel
+        </a>
+      </p>
+    </div>
+
+    <div id="Car" class="w3-container w3-white w3-padding-16 myLink">
+      <h3>Busca un carro bueno y barato con la ayuda de IA</h3>
+      <p><span class="w3-tag w3-deep-orange">¡Descuento!</span> Descuento Especial 15%</p>
+      <input class="w3-input w3-border" type="text" placeholder="Punto de recogida">
+      <p>
+        <a href="https://www.kayak.com/cars" target="_blank" class="w3-button w3-dark-grey">
+          <i class="fa fa-car w3-margin-right"></i>Buscar Automóvil
+        </a>
+      </p>
+    </div>
+  </div>
+</header>
+
+<script src="scripts.js"></script>
+</body>
+</html>

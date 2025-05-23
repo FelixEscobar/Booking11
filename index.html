@@ -7,12 +7,65 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="Estilobooking11.css">
+  <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+    .myLink {display: none}
+
+    /* Estilos del chatbot */
+    body {
+      background: #f0f2f5;
+      margin: 0;
+      padding: 0;
+    }
+    .chat-container {
+      width: 350px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      margin: 30px auto;
+    }
+    .chat-messages {
+      padding: 15px;
+      height: 400px;
+      overflow-y: auto;
+    }
+    .message {
+      margin-bottom: 10px;
+    }
+    .user {
+      text-align: right;
+      color: blue;
+    }
+    .bot {
+      text-align: left;
+      color: green;
+    }
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+    }
+    .chat-input button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body class="w3-light-grey">
 
-<!-- CHATBOT -->
+<!-- CHATBOT PRIMERO -->
 <div class="chat-container">
   <div class="chat-messages" id="chat-messages">
     <div class="message bot">Hola, soy tu asistente virtual. ¿En qué puedo ayudarte?</div>
@@ -23,13 +76,55 @@
   </div>
 </div>
 
-<!-- MENÚ Y PÁGINA PRINCIPAL -->
+<script>
+  function sendMessage() {
+    const userInput = document.getElementById('user-input');
+    const messageText = userInput.value.trim();
+    if (messageText === '') return;
+
+    addMessage('user', messageText);
+    userInput.value = '';
+
+    // Respuesta básica del bot
+    setTimeout(() => {
+      const botResponse = getBotResponse(messageText);
+      addMessage('bot', botResponse);
+    }, 500);
+  }
+
+  function addMessage(sender, text) {
+    const chatMessages = document.getElementById('chat-messages');
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message', sender);
+    messageDiv.textContent = text;
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function getBotResponse(input) {
+    input = input.toLowerCase();
+    if (input.includes('hola')) {
+      return '¡Hola! ¿Cómo estás?';
+    } else if (input.includes('ayuda')) {
+      return 'Claro, estoy aquí para ayudarte. ¿Qué necesitas?';
+    } else if (input.includes('gracias')) {
+      return '¡De nada! Para eso estoy.';
+    } else {
+      return 'Lo siento, no entendí eso. ¿Podrías reformularlo?';
+    }
+  }
+</script>
+
+<!-- MENÚ Y PÁGINA PRINCIPAL DESPUÉS -->
+
+<!-- Navigation Bar -->
 <div class="w3-bar w3-white w3-border-bottom w3-xlarge">
   <a href="#" class="w3-bar-item w3-button w3-text-red w3-hover-red">
     <b><i class="fa fa-map-marker w3-margin-right"></i>Booking 11</b>
   </a>
 </div>
 
+<!-- Header -->
 <header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
   <img class="w3-image" src="https://www.w3schools.com/w3images/london2.jpg" alt="London" width="1500" height="700">
   <div class="w3-display-middle" style="width:65%">
@@ -45,6 +140,7 @@
       </button>
     </div>
 
+    <!-- Tabs -->
     <div id="Flight" class="w3-container w3-white w3-padding-16 myLink">
       <h3>Viaja por el mundo</h3>
       <div class="w3-row-padding" style="margin:0 -16px;">
@@ -68,7 +164,7 @@
       <h3>Busca el mejor hotel para estar tranquilo</h3>
       <p>Dile al agente y el sitio de Airbnb que el botón "Buscar hotel" te dará la mejor experiencia al mejor precio.</p>
       <p>
-        <a href="https://booking11.vercel.app/vuelo.html" target="_blank" class="w3-button w3-dark-grey">
+        <a href="https://www.booking.com/" target="_blank" class="w3-button w3-dark-grey">
           <i class="fa fa-bed w3-margin-right"></i>Buscar Hotel
         </a>
       </p>
@@ -87,6 +183,25 @@
   </div>
 </header>
 
-<script src="scripts.js"></script>
+<script>
+// Tabs
+function openLink(evt, linkName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("myLink");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+  }
+  document.getElementById(linkName).style.display = "block";
+  evt.currentTarget.className += " w3-red";
+}
+
+// Click on the first tab on load
+document.getElementsByClassName("tablink")[0].click();
+</script>
+
 </body>
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vuelo – Booking IA</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Header común -->
+  <!--- Puedes hacer include si tienes un build, o copiar directamente: --->
+  <header>
+    <div class="logo">Booking IA</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a class="active" href="vuelo.html">Vuelo</a></li>
+        <li><a href="hotel.html">Hotel</a></li>
+        <li><a href="renta-auto.html">Renta de Auto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Buscar Vuelos</h1>
+    <form id="form-vuelo">
+      <label>Origen:
+        <input type="text" name="origen" required>
+      </label>
+      <label>Destino:
+        <input type="text" name="destino" required>
+      </label>
+      <label>Fecha de ida:
+        <input type="date" name="ida" required>
+      </label>
+      <label>Fecha de vuelta:
+        <input type="date" name="vuelta">
+      </label>
+      <button type="submit">Buscar</button>
+    </form>
+    <div id="resultados-vuelo"></div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
